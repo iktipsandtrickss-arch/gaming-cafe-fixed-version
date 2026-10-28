@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090d">
+  <meta name="description" content="Explore gaming stations, food and drinks, tournaments and online reservations at Respawn Cafe.">
+  <title>{% if page == 'gaming' %}Gaming Arenas{% elif page == 'cafe' %}Cafe & Dining{% elif page == 'tournaments' %}Tournaments{% elif page == 'book' %}Book a Station{% else %}Home{% endif %} | Respawn Cafe</title>
+  <link rel="icon" href="/static/images/fc26-poster.jpg">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="page-{{ page|default('home') }}">
+  <div class="site-noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Cafe home">
+      <span class="brand-mark" id="brand-mark">ϟ</span>
+      <img id="brand-logo" class="brand-logo hidden" alt="Cafe logo">
+      <span class="brand-name" id="brand-name">RESPAWN <b>CAFE</b></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="/" {% if page == 'home' %}aria-current="page" class="is-active"{% endif %}>Home</a>
+      <a href="/gaming" {% if page == 'gaming' %}aria-current="page" class="is-active"{% endif %}>Gaming</a>
+      <a href="/cafe" {% if page == 'cafe' %}aria-current="page" class="is-active"{% endif %}>Cafe &amp; Dining</a>
+      <a href="/tournaments" {% if page == 'tournaments' %}aria-current="page" class="is-active"{% endif %}>Tournaments</a>
+      <a href="/book" {% if page == 'book' %}aria-current="page" class="is-active"{% endif %}>Book Station</a>
+      <a href="/track">Track Order</a>
+    </nav>
+    <a class="button button-red top-book" href="/book">Book now <span>↗</span></a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">☰</button>
+  </header>
+  <div class="mobile-menu hidden" id="mobile-menu">
+    <a href="/" {% if page == 'home' %}aria-current="page"{% endif %}>Home</a>
+    <a href="/gaming" {% if page == 'gaming' %}aria-current="page"{% endif %}>Gaming setups</a>
+    <a href="/cafe" {% if page == 'cafe' %}aria-current="page"{% endif %}>Cafe &amp; Dining</a>
+    <a href="/tournaments" {% if page == 'tournaments' %}aria-current="page"{% endif %}>Tournaments</a>
+    <a href="/book" {% if page == 'book' %}aria-current="page"{% endif %}>Book Station</a>
+    <a href="/track">Track order</a>
+  </div>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-glow glow-one"></div><div class="hero-glow glow-two"></div>
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span><span id="tagline">EAT • DRINK • PLAY</span><i></i><span>YOUR GAMING LOUNGE</span></div>
+        <h1><span id="hero-brand">RESPAWN</span><em id="hero-brand-accent">CAFE</em></h1>
+        <p class="hero-subtitle" id="hero-subtitle">Elevate Your Gaming Experience With Us.</p>
+        <div class="hero-specs"><span><i class="spec-icon">▣</i> PC & CONSOLE ARENAS</span><span><i class="spec-icon">⌖</i> <b id="hero-location">CUMILLA, BANGLADESH</b></span></div>
+        <div class="hero-actions"><a class="button button-red" href="/book">Reserve your station <span>↗</span></a><a class="button button-glass" href="/gaming">Explore arenas <span>↓</span></a></div>
+      </div>
+      <div class="hero-art" aria-label="Featured games">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="poster-card poster-left"><img id="hero-game-one" src="/static/images/fc26-poster.jpg" alt="Featured football game poster"><span class="poster-tag" id="hero-game-one-label">FC 26</span></div>
+        <div class="poster-card poster-center"><img id="hero-game-three" src="/static/images/gta-v-poster.svg" alt="GTA V open-world game artwork"><span class="poster-tag">GTA V</span></div>
+        <div class="poster-card poster-right"><img id="hero-game-two" src="/static/images/spiderman-poster.jpg" alt="Featured superhero game poster"><span class="poster-tag" id="hero-game-two-label">ACTION GAMES</span></div>
+        <div class="hero-stamp"><span>PLAY</span><b>YOUR</b><span>WAY</span></div>
+      </div>
+      <a class="scroll-cue" href="#arenas"><span>⌄</span> SCROLL TO EXPLORE ARENAS & PASSES <span>⌄</span></a>
+    </section>
+
+    <section class="trust-strip section-wrap">
+      <div><strong>01</strong><span>Pick your arena</span></div><div><strong>02</strong><span>Choose a time</span></div><div><strong>03</strong><span>Send booking request</span></div><div><strong>04</strong><span>Wait for confirmation</span></div>
+    </section>
+
+    <section class="promo-live-banner section-wrap hidden" id="promo-live-banner" aria-live="polite"><div class="promo-live-symbol">✦</div><div class="promo-live-copy"><span>LIMITED-TIME BOOST</span><h2 id="promo-live-title">LEVEL UP YOUR NEXT SESSION</h2><p id="promo-live-detail">An admin-controlled discount is available.</p></div><div class="promo-live-off" id="promo-live-off">0% OFF</div><a href="/book" class="button button-red">Claim offer ↗</a></section>
+
+    <section class="content-section section-wrap" id="arenas">
+      <div class="section-heading"><div><p class="section-kicker">CHOOSE YOUR LOADOUT</p><h2>Find your <span>arena.</span></h2><p class="section-description">From couch co-op to high-speed racing, pick your setup and book a session.</p></div><a class="text-link" href="/book">Book a station <span>↗</span></a></div>
+      <div class="arena-grid" id="arena-grid"><div class="loading-card">Loading gaming setups…</div></div>
+    </section>
+
+    <section class="pass-section" id="passes">
+      <div class="pass-inner section-wrap"><div class="pass-copy"><p class="section-kicker">MAKE IT A LONG SESSION</p><h2>More play.<br><span>Better value.</span></h2><p>Bring your squad, pick your favourite station and ask the cafe about custom group bundles.</p><a class="button button-red" href="/book">Build your session <span>↗</span></a></div><div class="pass-stack" id="pass-stack"><div class="loading-card">Loading combo passes…</div></div></div>
+    </section>
+
+    <section class="content-section section-wrap" id="menu">
+      <div class="section-heading"><div><p class="section-kicker">FUEL YOUR NEXT MATCH</p><h2>Grab a bite.<br><span>Stay for one more.</span></h2><p class="section-description">Browse the cafe menu. Items and prices can be edited from your admin panel.</p></div><span class="menu-note"><span class="live-dot"></span> MENU & PRICES</span></div>
+      <div class="menu-filters" id="menu-filters"></div><div class="menu-grid" id="menu-grid"><div class="loading-card">Loading cafe menu…</div></div>
+    </section>
+
+    <section class="tournament-page-section section-wrap" id="tournaments">
+      <div class="tournament-hero">
+        <p class="section-kicker"><span class="live-dot"></span> COMPETE • CONNECT • CONQUER</p>
+        <h2>Enter the <span>arena.</span></h2>
+        <p class="section-description">Community competitions for players who want more than a casual match. Ask the cafe team about upcoming dates, entry rules and available slots.</p>
+        <a class="button button-red" href="/book">Practice at the cafe <span>↗</span></a>
+      </div>
+      <div class="tournament-grid">
+        <article class="tournament-card tournament-card-red"><div class="tournament-art tournament-football"><span>01 / FC</span><b>FC</b><i>COMMUNITY CUP</i></div><div class="tournament-content"><span class="tournament-status">SCHEDULE ANNOUNCED AT CAFE</span><h3>EA SPORTS FC Cup</h3><p>Head-to-head football matches, friendly rivalries and bragging rights on the big screen.</p><div class="tournament-meta"><span>▣ Console arena</span><span>♙ Solo / versus</span></div><a href="/gaming" class="text-link">Explore console stations ↗</a></div></article>
+        <article class="tournament-card tournament-card-blue"><div class="tournament-art tournament-fight"><span>02 / FIGHT</span><b>VS</b><i>FIGHT NIGHT</i></div><div class="tournament-content"><span class="tournament-status">SCHEDULE ANNOUNCED AT CAFE</span><h3>Fighting Game Night</h3><p>Bring your best combos and challenge other players in a fast-paced fighting game session.</p><div class="tournament-meta"><span>▣ Console arena</span><span>♙ Versus</span></div><a href="/gaming" class="text-link">Explore console stations ↗</a></div></article>
+        <article class="tournament-card tournament-card-gold"><div class="tournament-art tournament-racing"><span>03 / RACE</span><b>GO</b><i>TIME TRIAL</i></div><div class="tournament-content"><span class="tournament-status">SCHEDULE ANNOUNCED AT CAFE</span><h3>Racing Time Trial</h3><p>Set a clean lap, compare your best time and take on the racing simulator challenge.</p><div class="tournament-meta"><span>▣ Racing simulator</span><span>◷ Timed challenge</span></div><a href="/gaming" class="text-link">Explore racing setups ↗</a></div></article>
+      </div>
+      <div class="tournament-note"><span class="tournament-note-icon">🏆</span><div><b>Want to join the next event?</b><p>Dates, entry fees and player limits are confirmed by cafe staff. Check with the team before travelling; no event date is advertised here until it is confirmed.</p></div><a class="button button-glass" href="/cafe">Cafe details ↗</a></div>
+    </section>
+
+    <section class="booking-section" id="booking">
+      <div class="booking-backdrop"></div>
+      <div class="booking-layout section-wrap booking-layout-wizard">
+        <div class="booking-info"><p class="section-kicker">YOUR NEXT SESSION STARTS HERE</p><h2>Lock in your<br><span>game time.</span></h2><p>Pick your gaming setup, add extras, choose an available station and time, then submit your details and manual payment information.</p>
+          <div class="booking-info-row"><span class="info-icon">◷</span><div><b>Opening hours</b><p id="opening-hours">Daily · 08:00 AM – 12:00 AM</p></div></div>
+          <div class="booking-info-row"><span class="info-icon">⌖</span><div><b>Find the cafe</b><p id="booking-location">Cumilla, Bangladesh</p></div></div>
+          <div class="booking-info-row"><span class="info-icon">✓</span><div><b>Manual payment, staff confirmation</b><p>Choose bKash or Nagad, submit the payment amount/transaction ID, then use your unique reference code to track the request.</p></div></div>
+          <div class="no-payment"><span>✓</span> NO ONLINE GATEWAY · STAFF VERIFIES PAYMENT</div>
+          <a class="text-link booking-track-link" href="/track">Already booked? Track your reference code ↗</a>
+        </div>
+        <div class="booking-form booking-wizard" id="booking-wizard">
+          <div class="wizard-head"><div class="form-heading"><div><span class="form-number">RESPAWN CAFE / RESERVATION</span><h3>Book your station</h3></div><span class="form-bolt">ϟ</span></div>
+            <div class="wizard-progress" id="wizard-progress">
+              <div class="wizard-progress-item active" data-progress="1"><i>1</i><span>Experience</span></div><b></b>
+              <div class="wizard-progress-item" data-progress="2"><i>2</i><span>Extras</span></div><b></b>
+              <div class="wizard-progress-item" data-progress="3"><i>3</i><span>Schedule</span></div><b></b>
+              <div class="wizard-progress-item" data-progress="4"><i>4</i><span>Details & Payment</span></div>
+            </div>
+          </div>
+          <form id="booking-form" novalidate>
+            <input type="hidden" name="setup_id" id="booking-setup">
+            <input type="hidden" name="duration_minutes" id="booking-duration">
+            <input type="hidden" name="station_number" id="booking-station-number" value="1">
+            <input type="hidden" name="booking_date" id="booking-date">
+            <input type="hidden" name="start_time" id="booking-time">
+            <input type="hidden" name="extra_controllers" id="extra-controllers" value="0">
+
+            <section class="booking-step active" data-step="1">
+              <div class="step-copy"><span>STEP 1 OF 4</span><h4>Choose your experience</h4><p>Select a gaming setup to see its prices and available sessions.</p></div>
+              <div class="booking-setup-grid" id="booking-setup-cards"><div class="loading-card">Loading stations…</div></div>
+              <div class="wizard-summary-line"><span>Selected experience</span><b id="selected-setup-name">Choose a station above</b></div>
+            </section>
+
+            <section class="booking-step" data-step="2">
+              <div class="step-copy"><span>STEP 2 OF 4</span><h4>Add some extras</h4><p>Extra controllers and food/drinks can be prepared for your session.</p></div>
+              <div class="promo-ribbon hidden" id="promo-ribbon"><span class="promo-ribbon-icon">✦</span><div><b id="promo-ribbon-title">LEVEL UP YOUR NEXT SESSION</b><small id="promo-ribbon-detail">Special offer available at checkout.</small></div><span class="promo-ribbon-percent" id="promo-ribbon-percent">0% OFF</span></div>
+              <div class="wizard-panel player-pass-panel"><div class="wizard-panel-title"><span>✦</span><div><b>Player Pass / Combo Pass</b><p>Add a pass to this reservation; the pass price and any active promo will be included in your total.</p></div></div><input type="hidden" name="pass_id" id="booking-pass" value=""><div class="booking-pass-options" id="booking-pass-options"><button type="button" class="pass-pick-card selected" data-pass-id=""><b>No player pass</b><span>Book only your station</span></button></div></div>
+              <div class="wizard-panel"><div class="wizard-panel-title"><span>🎮</span><div><b>Extra controllers</b><p>Wireless controller · BDT 50 / 30 min or BDT 80 / hour · max 6</p></div></div>
+                <div class="quantity-row"><div><b>PS5 DualSense controller</b><small>Charge per controller will be added to your total.</small></div><div class="quantity-control"><button type="button" data-controller-step="-1" aria-label="Remove controller">−</button><b id="controller-count">0</b><button type="button" data-controller-step="1" aria-label="Add controller">+</button></div></div>
+              </div>
+              <div class="wizard-panel"><div class="wizard-panel-title"><span>🍔</span><div><b>Order food & drinks</b><p>Choose items from the cafe menu to serve at your station.</p></div></div>
+                <div class="food-add-row"><select id="food-select"><option value="">Select food or drink item…</option></select><button class="button button-red" id="add-food" type="button">+ Add item</button></div>
+                <div id="food-cart" class="food-cart"><p class="empty-cart">No items selected yet. Choose from the menu above.</p></div>
+              </div>
+              <div class="wizard-panel"><label class="special-note-label" for="booking-notes"><span>▤</span> Special requests / staff note <small>Optional</small></label><textarea name="notes" id="booking-notes" rows="3" maxlength="1000" placeholder="e.g. Please pre-load EA FC 26, a birthday setup, or a food note…"></textarea></div>
+            </section>
+
+            <section class="booking-step" data-step="3">
+              <div class="step-copy"><span>STEP 3 OF 4</span><h4>Schedule your session</h4><p>Choose a duration, individual station, date and an available start time.</p></div>
+              <div class="wizard-panel"><div class="wizard-panel-title"><span>◷</span><div><b>Duration</b><p>How long do you want to play?</p></div></div><div id="duration-options" class="duration-options"><p class="muted">Choose an experience first.</p></div></div>
+              <div class="wizard-panel"><div class="wizard-panel-title"><span>▣</span><div><b>Station</b><p id="station-hint">Select the individual station you want to use.</p></div></div><div id="station-options" class="station-options"><p class="muted">Choose a duration to continue.</p></div></div>
+              <div class="wizard-panel"><div class="wizard-panel-title"><span>▦</span><div><b>Date & time</b><p>Booked times are marked and cannot be selected.</p></div></div>
+                <div class="date-quick-row"><button type="button" class="date-quick active" data-date-offset="0">Today</button><button type="button" class="date-quick" data-date-offset="1">Tomorrow</button><label class="date-custom">Choose date<input type="date" id="custom-booking-date"></label></div>
+                <div id="time-grid" class="time-grid"><p class="muted">Choose a duration and station to load available times.</p></div><div class="slot-hint" id="slot-hint">Choose a duration, station and date to see available start times.</div>
+              </div>
+            </section>
+
+            <section class="booking-step" data-step="4">
+              <div class="step-copy"><span>STEP 4 OF 4</span><h4>Your details & payment</h4><p>Payment is manual. Your reservation stays pending until the cafe verifies it.</p></div>
+              <div class="form-grid">
+                <label>Phone / WhatsApp *<input name="phone" autocomplete="tel" placeholder="01XXXXXXXXX" required maxlength="50"></label>
+                <label>Gamer Tag / Name *<input name="customer_name" autocomplete="name" placeholder="Your name or gaming handle" required maxlength="120"></label>
+                <label class="wide">E-mail Address <span class="optional">OPTIONAL (GET NOTIFIED)</span><input type="email" name="email" autocomplete="email" placeholder="you@example.com" maxlength="180"></label>
+              </div>
+              <div class="payment-panel"><div class="wizard-panel-title"><span>৳</span><div><b>Manual payment method</b><p>Transfer manually, then enter what you paid. No automated gateway is connected.</p></div></div>
+                <div class="payment-method-options"><label class="payment-method-card"><input type="radio" name="payment_method" value="bkash" checked><span class="wallet-mark bkash-mark">b</span><span><b>bKash</b><small id="bkash-receiver">Contact cafe for payment number</small></span></label><label class="payment-method-card"><input type="radio" name="payment_method" value="nagad"><span class="wallet-mark nagad-mark">N</span><span><b>Nagad</b><small id="nagad-receiver">Contact cafe for payment number</small></span></label></div>
+                <div class="form-grid payment-fields"><label>Amount paid now (BDT)<input type="number" name="payment_amount" id="payment-amount" min="0" step="0.01" value="0" required><small>Enter 0 if you have not paid yet. Do not enter more than the total.</small></label><label>Transaction ID / reference <span class="optional">OPTIONAL</span><input name="payment_txn_id" maxlength="100" placeholder="e.g. bKash/Nagad TrxID"></label></div>
+                <div class="payment-note"><span>🔒</span><p>After submitting, you will receive a unique booking reference. Keep it safe and visit <a href="/track" target="_blank" rel="noopener">Track Order</a> to check your booking status later.</p></div>
+              </div>
+              <div class="order-summary"><span>ORDER SUMMARY</span><div id="booking-summary-lines"></div><b id="booking-total">৳ —</b></div>
+            </section>
+
+            <div class="wizard-actions"><button type="button" class="button button-glass" id="wizard-back" disabled>← Back</button><span class="wizard-action-note" id="wizard-action-note">Select an experience to begin.</span><button type="button" class="button button-red" id="wizard-next" disabled>Next ↗</button><button type="submit" class="button button-red submit-booking hidden">Submit booking ↗</button></div>
+            <p class="form-footnote">A new booking is <b>Pending</b> until cafe staff confirms it. Payment status is checked manually.</p>
+            <div class="form-message hidden" id="booking-message" role="status"></div>
+          </form>
+        </div>
+        <div class="booking-success hidden" id="booking-success" role="status"><div class="success-symbol">✓</div><p class="section-kicker">BOOKING REQUEST RECEIVED</p><h3>You're in the queue.</h3><p>Your unique reference code is below. Save it and use Track Order to check your confirmation status.</p><div class="reference-card"><span>YOUR UNIQUE REFERENCE</span><strong id="booking-result-reference">RSC-XXXXXXXXXXXX</strong><button type="button" class="button button-glass" id="copy-booking-reference">Copy reference</button></div><div class="success-summary" id="booking-result-summary"></div><a class="button button-red" id="booking-result-track" href="/track">Track this booking ↗</a><button type="button" class="button button-glass" id="new-booking">Book another session</button></div>
+      </div>
+    </section>
+
+    <section class="game-vault-section" id="game-vault">
+      <div class="game-vault-heading"><p class="section-kicker">NEXT-GEN TITLE VAULT</p><h2>Play the world's <span>biggest games.</span></h2><p>Pick your favourite, grab a controller, and drop right in.</p></div>
+      <div class="game-marquee" id="game-marquee" aria-label="Featured games animated gallery"><div class="marquee-lane lane-forward"><div class="marquee-track" id="game-track-top"></div></div><div class="marquee-lane lane-reverse"><div class="marquee-track" id="game-track-middle"></div></div><div class="marquee-lane lane-forward"><div class="marquee-track" id="game-track-bottom"></div></div></div>
+    </section>
+
+    <section class="location-section section-wrap" id="location">
+      <div class="location-card"><div class="location-graphic"><div class="map-grid"></div><div class="map-pin">⌖</div><span class="map-caption">MEET US HERE</span></div><div class="location-info"><p class="section-kicker">FIND YOUR WAY TO US</p><h2>Meet you at<br><span>the cafe.</span></h2><p id="location-address">Comilla Police Line, opposite of Eastern Bank, Cumilla, Bangladesh</p><div class="contact-lines"><a id="phone-link" href="tel:01XXXXXXXXX"><span>☎</span><b id="contact-phone">01XXXXXXXXX</b></a><a id="email-link" href="mailto:hello@yourcafe.com"><span>✉</span><b id="contact-email">hello@yourcafe.com</b></a></div><a class="button button-glass" id="maps-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Cumilla%2C%20Bangladesh">Open in Google Maps <span>↗</span></a></div></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="footer-main section-wrap"><a class="brand footer-brand" href="/"><span class="brand-mark" id="footer-brand-mark">ϟ</span><img id="footer-brand-logo" class="brand-logo hidden" alt="Cafe logo"><span class="brand-name" id="footer-brand">RESPAWN <b>CAFE</b></span></a><p id="footer-note">Your next match starts here.</p><div class="footer-links"><a href="/gaming">Gaming</a><a href="/cafe">Cafe &amp; Dining</a><a href="/tournaments">Tournaments</a><a href="/book">Book Station</a><a href="/track">Track order</a><a href="/admin">Admin</a></div></div><div class="footer-bottom section-wrap"><span id="footer-location">Cumilla, Bangladesh</span><span>© <span id="year"></span> <span id="footer-copyright-name">RESPAWN CAFE</span>. Built for your next level.</span></div></footer>
+
+  <nav class="mobile-bottom-nav" aria-label="Quick navigation"><a href="/" {% if page == 'home' %}class="active"{% endif %}><span>⌂</span>Home</a><a href="/gaming" {% if page == 'gaming' %}class="active"{% endif %}><span>♧</span>Gaming</a><a href="/book" class="mobile-book {% if page == 'book' %}active{% endif %}"><span>ϟ</span>Book</a><a href="/cafe" {% if page == 'cafe' %}class="active"{% endif %}><span>☕</span>Cafe</a><a href="/track"><span>⌕</span>Track</a></nav>
+  <script src="/static/site.js" defer></script>
+</body>
+</html>

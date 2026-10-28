@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090d">
+  <meta name="description" content="Check your gaming cafe booking and manual payment verification status with your unique reference code.">
+  <title>Track Booking | Gaming Cafe</title>
+  <link rel="icon" href="/static/images/fc26-poster.jpg">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="site-noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Cafe home"><span class="brand-mark">ϟ</span><span class="brand-name" id="track-brand-name">RESPAWN <b>CAFE</b></span></a>
+    <nav class="desktop-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/gaming">Gaming</a><a href="/cafe">Cafe &amp; Dining</a><a href="/tournaments">Tournaments</a><a href="/book">Book Station</a><a href="/track" aria-current="page" class="is-active">Track Order</a></nav>
+    <a class="button button-red top-book" href="/book">Book station <span>↗</span></a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </header>
+  <div class="mobile-menu hidden" id="mobile-menu">
+    <a href="/">Home</a><a href="/gaming">Gaming setups</a><a href="/cafe">Cafe &amp; Dining</a><a href="/tournaments">Tournaments</a><a href="/book">Book Station</a><a href="/track" aria-current="page">Track Order</a>
+  </div>
+  <main class="track-page">
+    <div class="track-shell">
+      <div class="track-heading"><p class="section-kicker">◉ LIVE ORDER & RESERVATION TRACKING</p><h1>Check your <span>booking status.</span></h1><p>Enter your unique booking reference to check whether the cafe has confirmed your station and whether your reported payment has been verified.</p></div>
+      <section class="track-search-panel">
+        <form class="track-search-form" id="track-form"><input type="text" id="track-reference" name="reference" maxlength="24" placeholder="Enter booking reference (e.g. RSC-A1B2C3D4E5F6)" autocomplete="off" spellcheck="false" required><button type="submit" class="button button-red" id="track-submit">⚡ Track booking</button></form>
+        <p class="track-help">You received this unique reference after submitting your booking. Keep it private.</p>
+        <div class="track-message hidden" id="track-message" role="status"></div>
+      </section>
+      <section class="track-result hidden" id="track-result" aria-live="polite"></section>
+      <div class="track-page-footer"><a href="/book">Reserve another station ↗</a><a href="/">Home</a><a id="track-call-link" href="tel:01XXXXXXXXX">Need help? Contact the cafe</a></div>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer-main section-wrap"><a class="brand footer-brand" href="/"><span class="brand-mark">ϟ</span><span class="brand-name" id="track-footer-brand">RESPAWN <b>CAFE</b></span></a><p>Keep your reference code safe.</p><div class="footer-links"><a href="/gaming">Gaming</a><a href="/cafe">Cafe &amp; Dining</a><a href="/tournaments">Tournaments</a><a href="/book">Book Station</a><a href="/admin">Admin</a></div></div><div class="footer-bottom section-wrap"><span id="track-footer-location">Cumilla, Bangladesh</span><span>© <span id="track-year"></span> <span id="track-copyright">RESPAWN CAFE</span></span></div></footer>
+  <nav class="mobile-bottom-nav" aria-label="Quick navigation"><a href="/"><span>⌂</span>Home</a><a href="/gaming"><span>♧</span>Gaming</a><a href="/book" class="mobile-book"><span>ϟ</span>Book</a><a href="/cafe"><span>☕</span>Cafe</a><a href="/track" class="active"><span>⌕</span>Track</a></nav>
+  <script src="/static/track.js" defer></script>
+</body>
+</html>

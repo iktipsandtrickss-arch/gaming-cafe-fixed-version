@@ -1,0 +1,62 @@
+GAMING CAFE WEBSITE — START HERE
+================================
+
+1) ZIP extract koro.
+2) Python 3.11+ install thakle folder-er moddhe Command Prompt kholo.
+3) Ekhane command gulo run koro:
+
+   py -m venv .venv
+   .venv\Scripts\activate
+   python -m pip install -r requirements.txt
+   set ADMIN_PASSWORD=tomarStrongPassword
+   set SECRET_KEY=ektaLongRandomSecret
+   python app.py
+
+4) Website: http://127.0.0.1:5000
+5) Admin:   http://127.0.0.1:5000/admin
+
+ALADA ALADA WEBSITE PAGE
+- Home:        http://127.0.0.1:5000/
+- Gaming:      http://127.0.0.1:5000/gaming
+- Cafe & Dining: http://127.0.0.1:5000/cafe
+- Tournaments: http://127.0.0.1:5000/tournaments
+- Book Station: http://127.0.0.1:5000/book
+- Track Order: http://127.0.0.1:5000/track
+Navbar-er link click korle alada URL/page open hobe.
+
+Password set na korle local default: admin1234
+Public website live korar age must strong password set koro.
+
+ADMIN THEKE KI KI CHANGE KORTE PARBA?
+- Cafe name, tagline, address, phone, email
+- Logo, hero background, featured game posters
+- Opening/closing time (default 8 AM to 12 AM)
+- Gaming setup, station capacity, per-session price
+- Combo pass-er naam, included items, regular price and offer price
+- Food/drinks menu, category, price, description, photo
+- Customer booking dekhe Pending / Confirmed / Rejected status
+- bKash/Nagad receiver number set kora ebong manual payment verification
+- `/track` page diye unique reference code search kore booking status dekha
+
+BOOKING SYSTEM
+Customer prothome gaming setup select korbe, tarpor extras (max 6 controller + food/drinks), duration, station, date o time select korbe.
+Booking submit hole unique `RSC-...` reference pabe. `/track` page-e code diye Pending/Confirmed/Rejected status dekhte parbe.
+Payment gateway nei: customer bKash/Nagad select kore amount o optional TrxID likhbe. Admin nijer wallet check kore payment Verified korbe; booking confirmation o payment verification alada.
+Admin panel > Gaming prices > Add setup diye notun console/station add korte parba. Station capacity o prottek duration-er price set koro.
+Schedule-e confirmed slot `Booked` ebong pending request `Pending` dekhabe. Same station/time double-book block hobe.
+
+RENDER DEPLOY KORAR AGE
+Real customer booking er jonno persistent PostgreSQL database-er DATABASE_URL set koro.
+Render Free web service-er local file restart/redeploy hole hariye jete pare; local SQLite-er upor hosted booking data-er jonno nirvor korona. Render Free Postgres-er data retention limit-o check koro. Details README.md e ache.
+
+Tournament page-e FC, fighting game, racing-er landing cards ache. Real tournament date/entry fee cafe confirm na kora porjonto announce koro na.
+
+Default business info / menu / sample prices age admin panel theke nijer moto kore nao.
+
+
+নতুন আপডেট (এই ZIP-এ):
+- Book Station-এ setup-এর ছবি/কার্ড বড় করা হয়েছে, দাম ও duration পড়া সহজ করা হয়েছে।
+- Hero-তে মাঝখানে custom GTA V-inspired poster, তিনটি floating game card, চলমান glow/orbit layer এবং নড়তে থাকা scroll arrow যোগ হয়েছে।
+- Booking Step 2-এ optional Player Pass/Combo Pass যোগ হয়েছে। Admin → Combo Passes-এ pass-এর নাম, details এবং দাম নিয়ন্ত্রণ করবেন।
+- Admin → Branding & hours → Promo control center থেকে promo ON/OFF, 0–100% discount, কোন অংশে discount হবে, এবং promo headline ঠিক করা যাবে। ডিফল্টভাবে promo OFF।
+- Booking total server-side হিসাব করা হয়; Track Order ও Admin booking list-এ player pass ও discount দেখা যায়।
